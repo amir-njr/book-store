@@ -1,9 +1,8 @@
 import "./globals.css";
-
+// NextAuthProviders
+import NextAuthProviders from "@/Providers/NextAuthProviders";
 // Font
 import { estedad } from "@/utils/fonts";
-// Layout
-import Layout from "@/components/layout/Layout";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={estedad.className}>
-        <Layout>{children}</Layout>
+        <NextAuthProviders>
+
+        {children}
+        </NextAuthProviders>
       </body>
     </html>
   );

@@ -1,8 +1,9 @@
+import SignIn from "@/components/template/SignIn/SignIn";
 
 const signin = () => {
     return (
         <section>
-            In
+            <SignIn />
         </section>
     );
 };

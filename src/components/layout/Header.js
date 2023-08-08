@@ -38,11 +38,11 @@ const Header = () => {
           <div href="/basket" className="flex flex-col items-center gap-1">
             <LogIn />
             <div className="flex gap-2">
-              <Link className="hover:text-blue-600" href="#">
+              <Link className="hover:text-blue-600" href="/signup">
                 ثبت نام
               </Link>
               |
-              <Link className="hover:text-blue-600" href="#">
+              <Link className="hover:text-blue-600" href="/signin">
                 ورود
               </Link>
             </div>
