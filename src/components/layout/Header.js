@@ -1,5 +1,9 @@
+"use client";
+
 // Link
 import Link from "next/link";
+// Session
+import { useSession } from "next-auth/react";
 
 // Components
 import Navbar from "../template/Navbar/Navbar";
@@ -7,8 +11,11 @@ import Navbar from "../template/Navbar/Navbar";
 import Shop from "../icons/Shop";
 import LogIn from "../icons/LogIn";
 import Magnifying from "../icons/Magnifying";
+import { BsSpeedometer2 } from "react-icons/bs";
 
 const Header = () => {
+  const { data } = useSession();
+
   return (
     <header className="bg-blue-100 sticky top-0">
       <div className="container mx-auto flex items-center py-4">
@@ -26,7 +33,7 @@ const Header = () => {
           />
         </div>
         <div className="basis-4/12 flex justify-end gap-5">
-          <Link href="/basket" className="flex flex-col items-center gap-1">
+          <Link href="/basket" className="flex flex-col items-center gap-2">
             <span className="relative">
               <span className="absolute bottom-[-6px] right-[-4px] w-5 h-5 bg-blue-600 rounded-full flex justify-center text-white">
                 0
@@ -36,15 +43,31 @@ const Header = () => {
             <span className="hover:text-blue-600">سبدخرید</span>
           </Link>
           <div href="/basket" className="flex flex-col items-center gap-1">
-            <LogIn />
-            <div className="flex gap-2">
-              <Link className="hover:text-blue-600" href="/signup">
-                ثبت نام
-              </Link>
-              |
-              <Link className="hover:text-blue-600" href="/signin">
-                ورود
-              </Link>
+            <div className="flex flex-col items-center justify-center gap-2">
+              {data ? (
+                <Link
+                  href="/dashboard"
+                  className="flex flex-col items-center justify-center gap-2"
+                >
+                  <span className="text-3xl">
+                    <BsSpeedometer2 />
+                  </span>
+                  پنل کاربری
+                </Link>
+              ) : (
+                <>
+                  <LogIn />
+                  <div className="flex gap-2">
+                    <Link className="hover:text-blue-600" href="/signup">
+                      ثبت نام
+                    </Link>
+                    |
+                    <Link className="hover:text-blue-600" href="/signin">
+                      ورود
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

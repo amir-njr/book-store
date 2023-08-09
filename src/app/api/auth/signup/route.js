@@ -6,7 +6,6 @@ import { hashPassword } from "@/utils/common";
 export async function POST(req) {
   const { name, lastName, email, nationalCode, phone, password } =
     await req.json();
-  console.log(name, lastName, email, nationalCode, phone, password);
 
   if (!name || !lastName || !email || !nationalCode || !phone || !password)
     return NextResponse.json(

@@ -8,6 +8,8 @@ import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 // Router
 import { useRouter } from "next/navigation";
+// ThreeDots
+import { ThreeDots } from "react-loader-spinner";
 
 // Elements
 import Input from "@/components/elements/Input";
@@ -23,6 +25,7 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const postHandler = async (e) => {
     e.preventDefault();
@@ -31,6 +34,7 @@ const SignUp = () => {
       toast.error("تکرار رمز مطابقت ندارد");
       return;
     }
+    setLoading(true);
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       body: JSON.stringify({
@@ -43,6 +47,7 @@ const SignUp = () => {
       }),
       headers: { "Content-Type": "application/json" },
     });
+    setLoading(false);
     const data = await res.json();
     if (data.erorr) {
       toast.error(data.erorr);
@@ -119,13 +124,21 @@ const SignUp = () => {
             ورود
           </Link>
         </p>
-        <div className="text-center">
-          <button
-            onClick={postHandler}
-            className="bg-lime-500 w-28 text-white rounded-md py-2 hover:bg-lime-600 transition-all"
-          >
-            ارسال
-          </button>
+        <div className="flex justify-center">
+          {loading ? (
+            <ThreeDots
+              visible={true}
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{ margin: "auto" }}
+            />
+          ) : (
+            <button
+              onClick={postHandler}
+              className="bg-lime-500 w-28 text-white rounded-md py-2 hover:bg-lime-600 transition-all"
+            >
+              ارسال
+            </button>
+          )}
         </div>
       </form>
       <Toaster />
