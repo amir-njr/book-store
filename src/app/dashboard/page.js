@@ -1,10 +1,12 @@
+// Components
+import Dashboard from "@/components/template/Dashboard/Dashboard";
 
 const dashboard = () => {
-    return (
-        <div className="">
-            dd
-        </div>
-    );
+  return (
+    <div>
+      <Dashboard />
+    </div>
+  );
 };
 
 export default dashboard;

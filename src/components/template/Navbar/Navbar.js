@@ -1,8 +1,7 @@
-
 // Link
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ userName }) => {
   return (
     <nav className="bg-blue-500">
       <div className="container mx-auto flex items-center text-white py-2">
@@ -18,16 +17,16 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="basis-6/12 flex justify-end">
-          {/* <span>
-            {name ? (
+          <span>
+            {userName ? (
               <span>
-                <span>{name}</span>
+                <span className="border-b">{userName} </span>
                 عزیز، خوش آمدید ❤️
               </span>
             ) : (
               ""
             )}
-          </span> */}
+          </span>
         </div>
       </div>
     </nav>

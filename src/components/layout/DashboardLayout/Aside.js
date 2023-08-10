@@ -4,7 +4,7 @@
 import { useAtom } from "jotai";
 import { Setting } from "@/lib/atom";
 // Pathname
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 // Link
 import Link from "next/link";
 
@@ -13,6 +13,7 @@ import Book from "@/components/icons/Book";
 import Profile from "@/components/icons/Profile";
 import Logout from "@/components/icons/LogOut";
 import { BsSpeedometer2 } from "react-icons/bs";
+import { signOut } from "next-auth/react";
 
 export default function Aside() {
   const pathname = usePathname();
@@ -36,7 +37,7 @@ export default function Aside() {
         </h1>
       </div>
 
-      <div className="flex flex-col gap-4 mx-1 mt-5">
+      <div className="flex flex-col gap-4 px-2 mt-5">
         <Link
           className={`${asideToggle ? "justify-center" : "justify-start"} ${
             pathname === "/dashboard" ? "bg-blue-400 text-white" : ""
@@ -74,9 +75,10 @@ export default function Aside() {
         </Link>
 
         <button
+          onClick={signOut}
           className={`${
             asideToggle ? "justify-center" : "justify-start"
-          } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+          } flex text-red-500 gap-2 hover:bg-red-600 hover:text-white p-2 rounded w-full transition-all`}
         >
           <span>
             <Logout />

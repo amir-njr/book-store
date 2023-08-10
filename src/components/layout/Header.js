@@ -13,7 +13,8 @@ import LogIn from "../icons/LogIn";
 import Magnifying from "../icons/Magnifying";
 import { BsSpeedometer2 } from "react-icons/bs";
 
-const Header = () => {
+const Header = ({userName}) => {
+  
   const { data } = useSession();
 
   return (
@@ -72,7 +73,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Navbar />
+      <Navbar userName={userName} />
     </header>
   );
 };
