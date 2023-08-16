@@ -14,7 +14,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { ThreeDots } from "react-loader-spinner";
 
 // Elements
-import Input from "@/components/elements/Input";
+import Input from "@/components/module/Input";
 // Icon
 import User from "@/components/icons/User";
 
@@ -77,7 +77,6 @@ const SignIn = () => {
         <div className="flex justify-center">
           {loading ? (
             <ThreeDots
-              
               visible={true}
               ariaLabel="three-dots-loading"
               wrapperStyle={{ margin: "auto" }}

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 
 // Element
-import Input from "@/components/elements/Input";
+import Input from "@/components/module/Input";
 export default function Right() {
   const [user, setUser] = useState({
     name: "",
@@ -76,7 +76,6 @@ export default function Right() {
           <button className="bg-lime-500 w-28 text-center rounded-md py-2 text-white hover:bg-lime-600 transition-all">
             ویرایش
           </button>
-          
         </div>
       </form>
     </section>

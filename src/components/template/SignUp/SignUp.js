@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { ThreeDots } from "react-loader-spinner";
 
 // Elements
-import Input from "@/components/elements/Input";
+import Input from "@/components/module/Input";
 // Icon
 import User from "@/components/icons/User";
 

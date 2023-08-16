@@ -14,7 +14,7 @@ import { useSession } from "next-auth/react";
 import { AiOutlineHome } from "react-icons/ai";
 import { GoMail } from "react-icons/go";
 
-export default function DashboardHeader() {
+export default function DashboardHeader({ createdAt }) {
   const [aside, setAside] = useAtom(Setting);
   const { asideToggle } = aside;
 
@@ -22,7 +22,7 @@ export default function DashboardHeader() {
 
   return (
     <div className="flex items-center h-24 bg-blue-100 rounded-b-md px-4 py-2">
-      <div className="basis-4/12 ">
+      <div className="basis-4/12 flex items-center justify-between">
         <div className="w-10 h-10">
           <span
             onClick={() => setAside({ ...aside, asideToggle: !asideToggle })}
@@ -41,6 +41,10 @@ export default function DashboardHeader() {
           >
             <Bars />
           </span>
+        </div>
+        <div className="bg-white px-4 py-7 shadow-md flex items-center gap-3 rounded font-bold">
+          <span>تاریخ عضویت:</span>
+          <p>{new Date(createdAt).toLocaleDateString("fa-IR")}</p>
         </div>
       </div>
       <div className="basis-4/12 flex justify-center">

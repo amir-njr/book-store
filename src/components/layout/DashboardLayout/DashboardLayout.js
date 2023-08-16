@@ -1,31 +1,33 @@
-"use client";
+// DB
+import connectDB from "@/utils/connectDB";
+// NextAuth
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+// Model
+import User from "@/models/User";
+
+
+
+// Components
 import Aside from "./Aside";
 import Header from "./Header";
+// Module
+import Div from "@/components/module/Div";
 
-// Atom
-import { useAtom } from "jotai";
-import { Setting } from "@/lib/atom";
-
-const DashboardLayout = ({ children }) => {
-  const [aside] = useAtom(Setting);
-  const { asideToggle } = aside;
+async function DashboardLayout({ children }) {
+  await connectDB();
+  const session = await getServerSession(authOptions);
+  const user = await User.findOne({ email: session.user.email });
   return (
     <div className="flex h-[100vh]">
       <Aside />
 
-      <div
-        className={`${
-          asideToggle ? "basis-11/12" : "basis-10/12"
-        }  h-full mx-4 transition-all`}
-      >
-        <Header />
-        <div className="my-7">
-        {children}
-
-        </div>
-      </div>
+      <Div>
+        <Header createdAt={JSON.parse(JSON.stringify(user.createdAt))} />
+        <div className="my-7">{children}</div>
+      </Div>
     </div>
   );
-};
+}
 
 export default DashboardLayout;

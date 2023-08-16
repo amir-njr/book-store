@@ -27,7 +27,7 @@ export default function Aside() {
         asideToggle ? "basis-1/12" : "basis-2/12"
       } bg-blue-100 h-full transition-all rounded-l-md overflow-hidden`}
     >
-      <div className="h-20 bg-blue-600 flex items-center justify-center">
+      <div className="h-24 bg-blue-600 flex items-center justify-center">
         <h1
           className={`${
             asideToggle ? "text-2xl" : "text-5xl"
@@ -60,6 +60,18 @@ export default function Aside() {
             <Book />
           </span>
           {asideToggle ? " " : "کتاب های من"}
+        </Link>
+
+        <Link
+          className={`${asideToggle ? "justify-center" : "justify-start"} ${
+            pathname === "/dashboard/add-book" ? "bg-blue-400 text-white" : ""
+          } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+          href="/dashboard/add-book"
+        >
+          <span>
+            <Book />
+          </span>
+          {asideToggle ? " " : "ایجاد کتاب"}
         </Link>
 
         <Link
