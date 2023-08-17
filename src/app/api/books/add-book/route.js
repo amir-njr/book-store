@@ -1,9 +1,13 @@
+// NextAuth
+import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
-import { NextResponse } from "next/server";
+// DB
 import connectDB from "@/utils/connectDB";
+// Models
 import User from "@/models/User";
 import Book from "@/models/Book";
+// Mongoose
 import { Types } from "mongoose";
 
 export async function POST(req) {
@@ -20,24 +24,20 @@ export async function POST(req) {
   if (!user)
     return NextResponse.json({ error: "لطفا ثبت نام نمایید" }, { status: 404 });
 
-  const { title, price , description , category , image } = await req.json();
+  const { title, price, description, category } = await req.json();
   if (!title || !price)
     return NextResponse.json(
       { error: "لطفا اطلاعات معتبری وارد نمایید" },
       { status: 400 }
     );
-  console.log("Start");
-  console.log(title, price);
-  const b = await Book.create({
+  const book = await Book.create({
     title,
     description,
     price: +price,
     category,
-    image,
     userId: new Types.ObjectId(user._id),
   });
 
-  console.log(b, "End");
   return NextResponse.json(
     { message: "با موفقیت ثبت کتاب انجام شد" },
     { status: 201 }

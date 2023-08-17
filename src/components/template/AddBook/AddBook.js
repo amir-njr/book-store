@@ -2,6 +2,7 @@
 
 import BreadCrumb from "@/components/module/BreadCrumb";
 import Form from "@/components/module/Form";
+import Radio from "@/components/module/Radio";
 import SecondInput from "@/components/module/SecondInput";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
@@ -12,7 +13,6 @@ const AddBook = () => {
     description: "",
     price: "",
     category: "",
-    image: "",
   });
 
   const postHandler = async (e) => {
@@ -34,6 +34,7 @@ const AddBook = () => {
   return (
     <div className="flex flex-col gap-4">
       <BreadCrumb title={["داشبورد", "ایجاد کتاب"]} />
+
       <Form>
         <SecondInput
           bookData={bookData}
@@ -54,18 +55,8 @@ const AddBook = () => {
           name="price"
           placeholder="قیمت کتاب را وارد نمایید ... (تومان)"
         />
-        <SecondInput
-          bookData={bookData}
-          setBookData={setBookData}
-          name="category"
-          placeholder="موضوع کتاب را وارد نمایید ... (اختیاری)"
-        />
-        <SecondInput
-          bookData={bookData}
-          setBookData={setBookData}
-          name="image"
-          placeholder="آپلود عکس کتاب ..."
-        />
+
+        <Radio bookData={bookData} setBookData={setBookData} />
         <button
           onClick={(e) => postHandler(e)}
           className="bg-blue-600 text-white rounded px-2 py-1 mt-4 hover:bg-blue-700"

@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body cz-shortcut-listen="true" className={estedad.className}>
+      <body className={estedad.className}>
         <NextAuthProviders>{children}</NextAuthProviders>
       </body>
     </html>

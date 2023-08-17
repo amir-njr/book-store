@@ -1,10 +1,15 @@
+import BookCard from "@/components/module/BookCard";
 
-const HomePage = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+
+
+const HomePage = ({ bookData }) => {
+  return (
+    <div className="grid grid-cols-4 gap-8">
+      {bookData.map((item) => (
+        <BookCard key={item._id} data={item} />
+      ))}
+    </div>
+  );
 };
 
 export default HomePage;

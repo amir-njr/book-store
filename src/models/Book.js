@@ -12,9 +12,10 @@ const bookSchema = new Schema({
     required: true,
   },
 
-  category: String,
-  image: {
+  category: {
     type: String,
+    enum: ["handout", "academic", "story", "novel"],
+    required: true,
   },
 
   userId: {

@@ -1,11 +1,9 @@
 "use client";
 
 const SecondInput = ({
-  value,
-  onChange,
+  
   name,
   placeholder,
-  type,
   textarea = false,
   bookData,
   setBookData,
@@ -13,7 +11,6 @@ const SecondInput = ({
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setBookData({ ...bookData, [name]: value });
-    console.log(bookData,"ss")
   };
   return (
     <>
