@@ -23,6 +23,21 @@ const sp = (number) => {
   return e2p(joinedNumber);
 };
 
+export const qountityCount = (card, id) => {
+  if (card.selectedItems?.length >= 1) {
+    const index = card.selectedItems.findIndex((item) => item._id === id);
+    if (index === -1) {
+      return false;
+    } else {
+      return card.selectedItems[index].qty;
+    }
+  } else {
+    return false;
+  }
+};
 
+export const isDataInArray = (card, id) => {
+  return card.selectedItems?.find((item) => item._id === id);
+};
 
-export { hashPassword, verifyPassword , e2p, p2e, sp  };
+export { hashPassword, verifyPassword, e2p, p2e, sp };

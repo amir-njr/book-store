@@ -30,7 +30,7 @@ export async function POST(req) {
       { error: "لطفا اطلاعات معتبری وارد نمایید" },
       { status: 400 }
     );
-  const book = await Book.create({
+  await Book.create({
     title,
     description,
     price: +price,

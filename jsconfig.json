@@ -14,7 +14,8 @@
       "@/lib/": ["src/lib/*"],
       "@/models/": ["src/models/*"],
       "@/utils/": ["src/utils/*"],
-      "@/Providers/": ["src/Providers/*"]
+      "@/Providers/": ["src/Providers/*"],
+      "@/redux/": ["src/redux/*"]
     }
   }
 }

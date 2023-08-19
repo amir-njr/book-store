@@ -1,6 +1,8 @@
 import "./globals.css";
 // NextAuthProviders
 import NextAuthProviders from "@/Providers/NextAuthProviders";
+// Redux
+import ReduxProviders from "@/redux/ReduxProviders";
 // Font
 import { estedad } from "@/utils/fonts";
 
@@ -13,7 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={estedad.className}>
-        <NextAuthProviders>{children}</NextAuthProviders>
+        <NextAuthProviders>
+          <ReduxProviders>{children}</ReduxProviders>
+        </NextAuthProviders>
       </body>
     </html>
   );

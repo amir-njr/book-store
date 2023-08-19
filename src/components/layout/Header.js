@@ -4,6 +4,8 @@
 import Link from "next/link";
 // Session
 import { useSession } from "next-auth/react";
+// Selector
+import { useSelector } from "react-redux";
 
 // Components
 import Navbar from "../template/Navbar/Navbar";
@@ -16,6 +18,7 @@ import { BsSpeedometer2 } from "react-icons/bs";
 const Header = ({userName}) => {
   
   const { data } = useSession();
+  const card = useSelector((state) => state.card);
 
   return (
     <header className="bg-blue-100 sticky top-0">
@@ -37,7 +40,7 @@ const Header = ({userName}) => {
           <Link href="/basket" className="flex flex-col items-center gap-2">
             <span className="relative">
               <span className="absolute bottom-[-6px] right-[-4px] w-5 h-5 bg-blue-600 rounded-full flex justify-center text-white">
-                0
+                {card.itemCounter}
               </span>
               <Shop />
             </span>
