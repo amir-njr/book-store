@@ -13,8 +13,9 @@ import { useSession } from "next-auth/react";
 // React Icon
 import { AiOutlineHome } from "react-icons/ai";
 import { GoMail } from "react-icons/go";
+import { TbUserCircle } from "react-icons/tb";
 
-export default function DashboardHeader({ createdAt }) {
+export default function DashboardHeader({ createdAt, name, role }) {
   const [aside, setAside] = useAtom(Setting);
   const { asideToggle } = aside;
 
@@ -60,12 +61,12 @@ export default function DashboardHeader({ createdAt }) {
       </div>
       <div className="basis-4/12 flex gap-3 items-center justify-end">
         <div className="flex gap-3 items-center bg-white rounded p-2 shadow-md">
-          <div className="rounded-full h-16 w-16 bg-red-600 flex justify-center items-center">
-            P
-          </div>
+          <TbUserCircle className="text-6xl text-blue-500" />
           <div className="flex flex-col border-l-2 border-black pl-3">
-            <span>کاربر</span>
-            <span>Amir</span>
+            <span className="text-xs">
+              {role === "ADMIN" ? "ادمین" : "کاربر"}
+            </span>
+            <span>{name ?? ""}</span>
           </div>
           <p>
             <span className="text-xl">

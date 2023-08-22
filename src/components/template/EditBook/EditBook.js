@@ -7,7 +7,7 @@ import SecondInput from "@/components/module/SecondInput";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 
-const AddBook = () => {
+const EditBook = () => {
   const [bookData, setBookData] = useState({
     title: "",
     description: "",
@@ -15,10 +15,10 @@ const AddBook = () => {
     category: "",
   });
 
-  const postHandler = async (e) => {
+  const editHandler = async (e) => {
     e.preventDefault();
     const res = await fetch("/api/books", {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify(bookData),
       headers: { "Content-Type": "application/json" },
     });
@@ -33,7 +33,7 @@ const AddBook = () => {
   };
   return (
     <div className="flex flex-col gap-4">
-      <BreadCrumb title={["داشبورد", "ایجاد کتاب"]} />
+      <BreadCrumb title={["داشبورد", "ویرایش کتاب"]} />
 
       <Form>
         <SecondInput
@@ -58,10 +58,10 @@ const AddBook = () => {
 
         <Radio bookData={bookData} setBookData={setBookData} />
         <button
-          onClick={(e) => postHandler(e)}
+          onClick={(e) => editHandler(e)}
           className="bg-blue-600 text-white rounded px-2 py-1 mt-4 hover:bg-blue-700"
         >
-          ثبت کتاب
+          ویرایش کتاب
         </button>
       </Form>
       <Toaster />
@@ -69,4 +69,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default EditBook;

@@ -1,7 +1,9 @@
+import Warning from "@/components/module/Warning";
+
 const MyBooks = () => {
     return (
         <div>
-            MyBooks
+            <Warning text="شما هنوز کتابی خریداری نکرده اید." />
         </div>
     );
 };

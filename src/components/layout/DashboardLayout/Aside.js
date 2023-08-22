@@ -1,5 +1,7 @@
 "use client";
 
+// State
+import { useState } from "react";
 // Atom
 import { useAtom } from "jotai";
 import { Setting } from "@/lib/atom";
@@ -7,19 +9,27 @@ import { Setting } from "@/lib/atom";
 import { usePathname } from "next/navigation";
 // Link
 import Link from "next/link";
+// Next-Auth/React
+import { signOut } from "next-auth/react";
 
 // Icons
 import Book from "@/components/icons/Book";
 import Profile from "@/components/icons/Profile";
 import Logout from "@/components/icons/LogOut";
+import Users from "@/components/icons/Users";
+// React Icon
 import { BsSpeedometer2 } from "react-icons/bs";
-import { signOut } from "next-auth/react";
+import { BiBookAdd } from "react-icons/bi";
+import { FaRegEdit } from "react-icons/fa";
+import { MdOutlineDeleteSweep } from "react-icons/md";
+import { VscSettings } from "react-icons/vsc";
 
-export default function Aside() {
+export default function Aside({ role }) {
   const pathname = usePathname();
 
   const [aside] = useAtom(Setting);
   const { asideToggle } = aside;
+  const [dropdown, setDropdown] = useState(false);
 
   return (
     <section
@@ -40,7 +50,7 @@ export default function Aside() {
       <div className="flex flex-col gap-4 px-2 mt-5">
         <Link
           className={`${asideToggle ? "justify-center" : "justify-start"} ${
-            pathname === "/dashboard" ? "bg-blue-400 text-white" : ""
+            pathname === "/dashboard" && "bg-blue-400 text-white"
           } flex items-center gap-2 hover:bg-blue-400 hover:text-white hover:fill-white p-2 rounded w-full transition-all`}
           href="/dashboard"
         >
@@ -49,34 +59,100 @@ export default function Aside() {
           </span>
           {asideToggle ? " " : "داشبورد"}
         </Link>
+        {role === "ADMIN" ? (
+          <Link
+            className={`${asideToggle ? "justify-center" : "justify-start"} ${
+              pathname === "/dashboard/my-books" && "bg-blue-400 text-white"
+            } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+            href="/dashboard/users"
+          >
+            <span>
+              <Users />
+            </span>
+            {asideToggle ? " " : "کاربران"}
+          </Link>
+        ) : (
+          <Link
+            className={`${asideToggle ? "justify-center" : "justify-start"} ${
+              pathname === "/dashboard/my-books" && "bg-blue-400 text-white"
+            } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+            href="/dashboard/my-books"
+          >
+            <span>
+              <Book />
+            </span>
+            {asideToggle ? " " : "کتاب های من"}
+          </Link>
+        )}
+        {role === "USER"
+          ? null
+          : role === "ADMIN" && (
+              <div>
+                <span
+                  onClick={() => setDropdown(!dropdown)}
+                  className={`${
+                    asideToggle ? "justify-center" : "justify-start"
+                  } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all cursor-pointer`}
+                >
+                  <span>
+                    <VscSettings className="text-2xl" />
+                  </span>
+                  {asideToggle ? " " : "مدیریت کتاب ها"}
+                </span>
+                <div
+                  className={`${
+                    dropdown ? "h-32" : "h-0 overflow-hidden"
+                  } transition-all px-3`}
+                >
+                  <Link
+                    className={`${
+                      asideToggle ? "justify-center" : "justify-start"
+                    } ${
+                      pathname === "/dashboard/add-book" &&
+                      "bg-blue-400 text-white"
+                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+                    href="/dashboard/add-book"
+                  >
+                    <span>
+                      <BiBookAdd className="text-xl" />
+                    </span>
+                    {asideToggle ? " " : "افزودن"}
+                  </Link>
+                  <Link
+                    className={`${
+                      asideToggle ? "justify-center" : "justify-start"
+                    } ${
+                      pathname === "/dashboard/edit-book" &&
+                      "bg-blue-400 text-white"
+                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+                    href="/dashboard/edit-book"
+                  >
+                    <span>
+                      <FaRegEdit className="text-xl" />
+                    </span>
+                    {asideToggle ? " " : "ویرایش"}
+                  </Link>
+                  <Link
+                    className={`${
+                      asideToggle ? "justify-center" : "justify-start"
+                    } ${
+                      pathname === "/dashboard/delete-book" &&
+                      "bg-blue-400 text-white"
+                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+                    href="/dashboard/delete-book"
+                  >
+                    <span>
+                      <MdOutlineDeleteSweep className="text-xl" />
+                    </span>
+                    {asideToggle ? " " : "حذف"}
+                  </Link>
+                </div>
+              </div>
+            )}
 
         <Link
           className={`${asideToggle ? "justify-center" : "justify-start"} ${
-            pathname === "/dashboard/my-books" ? "bg-blue-400 text-white" : ""
-          } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
-          href="/dashboard/my-books"
-        >
-          <span>
-            <Book />
-          </span>
-          {asideToggle ? " " : "کتاب های من"}
-        </Link>
-
-        <Link
-          className={`${asideToggle ? "justify-center" : "justify-start"} ${
-            pathname === "/dashboard/add-book" ? "bg-blue-400 text-white" : ""
-          } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
-          href="/dashboard/add-book"
-        >
-          <span>
-            <Book />
-          </span>
-          {asideToggle ? " " : "ایجاد کتاب"}
-        </Link>
-
-        <Link
-          className={`${asideToggle ? "justify-center" : "justify-start"} ${
-            pathname === "/dashboard/profile text-white" ? "bg-blue-400" : ""
+            pathname === "/dashboard/profile text-white" && "bg-blue-400"
           } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
           href="/dashboard/profile"
         >
