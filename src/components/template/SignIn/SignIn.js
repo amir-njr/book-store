@@ -14,7 +14,8 @@ import { Toaster, toast } from "react-hot-toast";
 import { ThreeDots } from "react-loader-spinner";
 
 // Elements
-import Input from "@/components/module/Input";
+import UserInput from "@/components/module/UserInput";
+
 // Icon
 import User from "@/components/icons/User";
 
@@ -53,13 +54,13 @@ const SignIn = () => {
       </div>
 
       <form className="flex flex-col gap-5 w-full rounded-md">
-        <Input
+        <UserInput
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="ایمیل را وارد نمایید ..."
           type="email"
         />
-        <Input
+        <UserInput
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="رمز عبور را وارد نمایید ..."

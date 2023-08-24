@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import Users from "@/components/template/Users/Users";
+import Users from "@/components/template/Dashboard/Users/Users";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { getServerSession } from "next-auth";
@@ -14,6 +14,7 @@ async function users() {
   if (!user) redirect("/signup");
 
   const users = await User.find();
+  
 
   return (
     <div>

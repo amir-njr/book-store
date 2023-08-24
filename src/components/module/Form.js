@@ -1,9 +1,9 @@
 "use client";
 
-const Form = ({ children }) => {
+const Form = ({ children , text }) => {
   return (
-    <form className="flex flex-col gap-5 mt-4">
-      <p className="text-blue-800 font-bold text-xl">تکمیل اطلاعات کتاب</p>
+    <form className="flex flex-col gap-5">
+      <p className="text-blue-800 font-bold text-xl">{text}</p>
       {children}
     </form>
   );

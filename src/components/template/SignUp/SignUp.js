@@ -12,7 +12,8 @@ import { useRouter } from "next/navigation";
 import { ThreeDots } from "react-loader-spinner";
 
 // Elements
-import Input from "@/components/module/Input";
+import UserInput from "@/components/module/UserInput";
+
 // Icon
 import User from "@/components/icons/User";
 
@@ -70,13 +71,13 @@ const SignUp = () => {
 
       <form className="flex flex-col gap-5 w-full rounded-md">
         <div className="flex gap-2">
-          <Input
+          <UserInput
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="نام تان را وارد نمایید ..."
             type="text"
           />
-          <Input
+          <UserInput
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder="نام خانوادگی تان را وارد نمایید ..."
@@ -84,32 +85,32 @@ const SignUp = () => {
           />
         </div>
         <div className="flex gap-2">
-          <Input
+          <UserInput
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="شماره تلفنتان را وارد نمایید ..."
             type="text"
           />
-          <Input
+          <UserInput
             value={nationalCode}
             onChange={(e) => setNationalCode(e.target.value)}
             placeholder="کد ملی تان را وارد نمایید ..."
             type="text"
           />
         </div>
-        <Input
+        <UserInput
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="ایمیل را وارد نمایید ..."
           type="email"
         />
-        <Input
+        <UserInput
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="رمز عبور را وارد نمایید ..."
           type="password"
         />
-        <Input
+        <UserInput
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
           placeholder="رمز عبور را تایید نمایید ..."

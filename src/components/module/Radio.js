@@ -1,4 +1,3 @@
-
 function Radio({ bookData, setBookData }) {
   const { category } = bookData;
 

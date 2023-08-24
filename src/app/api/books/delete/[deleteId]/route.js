@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 // DB
 import connectDB from "@/utils/connectDB";
 // Models
-import User from "@/models/User";
+import Book from "@/models/Book";
 
 export async function DELETE(req, context) {
   try {
@@ -17,9 +17,9 @@ export async function DELETE(req, context) {
         { error: "لطفا وارد حساب کاربری تان شوید" },
         { status: 401 }
       );
-    await User.deleteOne({ _id: id });
+    await Book.deleteOne({ _id: id });
 
-    return NextResponse.json({ message: "کاربر حذف شد" }, { status: 201 });
+    return NextResponse.json({ message: "کتاب حذف شد" }, { status: 201 });
   } catch {
     return NextResponse.json(
       { message: "مشکلی پیش آمده است" },

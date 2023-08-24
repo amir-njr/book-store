@@ -1,4 +1,4 @@
-import AddBook from "@/components/template/AddBook/AddBook";
+import AddBook from "@/components/template/Dashboard/AddBook/AddBook";
 
 const addBook = () => {
     return (

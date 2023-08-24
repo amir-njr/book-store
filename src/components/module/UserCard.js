@@ -1,12 +1,14 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ users }) => {
   const { name, lastName, email, nationalCode, phone, role, _id, createdAt } =
-    user;
+    users;
 
-  const deleteHandler = async() => {
+  const router = useRouter();
+  async function deleteHandler() {
     const res = await fetch(`/api/users/delete/${_id}`, {
       method: "DELETE",
     });
@@ -15,8 +17,11 @@ const UserCard = ({ user }) => {
       toast.error(result.error);
     } else {
       toast.success(result.message);
+      setTimeout(() => {
+        router.refresh();
+      }, 500);
     }
-  };
+  }
   return (
     <div>
       <table className="w-full shadow-xl rounded-b-xl overflow-hidden">

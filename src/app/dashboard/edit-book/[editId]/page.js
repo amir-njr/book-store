@@ -1,4 +1,4 @@
-import EditeBook from "@/components/template/EditBook/EditBook";
+import EditeBook from "@/components/template/Dashboard/EditBook/EditBook";
 
 const editBook = () => {
   return (
@@ -9,3 +9,4 @@ const editBook = () => {
 };
 
 export default editBook;
+

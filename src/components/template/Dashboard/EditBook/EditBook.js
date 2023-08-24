@@ -1,55 +1,59 @@
 "use client";
 
-import BreadCrumb from "@/components/module/BreadCrumb";
-import Form from "@/components/module/Form";
-import Radio from "@/components/module/Radio";
-import SecondInput from "@/components/module/SecondInput";
-import { useState } from "react";
-import { toast, Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react";
 
-const AddBook = () => {
+import { Toaster, toast } from "react-hot-toast";
+import Form from "@/components/module/Form";
+import BookInput from "@/components/module/BookInput";
+import BreadCrumb from "@/components/module/BreadCrumb";
+import Radio from "@/components/module/Radio";
+import { useParams } from "next/navigation";
+
+function EditBook() {
+  const { editId } = useParams();
+
   const [bookData, setBookData] = useState({
-    title: "",
-    description: "",
-    price: "",
-    category: "",
+    name: "",
+    lastName: "",
+    email: "",
+    nationalCode: "",
+    phone: "",
   });
 
-  const postHandler = async (e) => {
+  const editHandler = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/books", {
-      method: "POST",
+    const res = await fetch(`/api/books/edit/${editId}`, {
+      method: "PATCH",
       body: JSON.stringify(bookData),
       headers: { "Content-Type": "application/json" },
     });
-
-    const data = await res?.json();
-
-    if (data.error) {
-      toast.error(data.error);
+    const response = await res.json();
+    if (response.error) {
+      toast.error(response.error);
     } else {
-      toast.success(data.message);
+      toast.success(response.message);
     }
   };
+
   return (
     <div className="flex flex-col gap-4">
-      <BreadCrumb title={["داشبورد", "ایجاد کتاب"]} />
+      <BreadCrumb title={["داشبورد", "ویرایش کتاب"]} />
 
-      <Form>
-        <SecondInput
+      <Form text=" ویرایش کتاب">
+        <BookInput
           bookData={bookData}
           setBookData={setBookData}
           name="title"
           placeholder="نام کتاب را وارد نمایید ..."
         />
-        <SecondInput
+        <BookInput
           bookData={bookData}
           setBookData={setBookData}
           name="description"
           textarea={true}
           placeholder="توضیحی درباره کتاب وارد نمایید ... (اختیاری)"
         />
-        <SecondInput
+        <BookInput
           bookData={bookData}
           setBookData={setBookData}
           name="price"
@@ -58,15 +62,15 @@ const AddBook = () => {
 
         <Radio bookData={bookData} setBookData={setBookData} />
         <button
-          onClick={(e) => postHandler(e)}
+          onClick={(e) => editHandler(e)}
           className="bg-blue-600 text-white rounded px-2 py-1 mt-4 hover:bg-blue-700"
         >
-          ثبت کتاب
+          ویرایش کتاب
         </button>
       </Form>
       <Toaster />
     </div>
   );
-};
+}
 
-export default AddBook;
+export default EditBook;

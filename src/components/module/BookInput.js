@@ -1,7 +1,6 @@
 "use client";
 
-const SecondInput = ({
-  
+const BookInput = ({
   name,
   placeholder,
   textarea = false,
@@ -37,4 +36,4 @@ const SecondInput = ({
   );
 };
 
-export default SecondInput;
+export default BookInput;

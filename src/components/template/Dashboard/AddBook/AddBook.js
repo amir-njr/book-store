@@ -3,11 +3,11 @@
 import BreadCrumb from "@/components/module/BreadCrumb";
 import Form from "@/components/module/Form";
 import Radio from "@/components/module/Radio";
-import SecondInput from "@/components/module/SecondInput";
+import BookInput from "@/components/module/BookInput";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 
-const EditBook = () => {
+const AddBook = () => {
   const [bookData, setBookData] = useState({
     title: "",
     description: "",
@@ -15,10 +15,10 @@ const EditBook = () => {
     category: "",
   });
 
-  const editHandler = async (e) => {
+  const postHandler = async (e) => {
     e.preventDefault();
     const res = await fetch("/api/books", {
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify(bookData),
       headers: { "Content-Type": "application/json" },
     });
@@ -32,24 +32,24 @@ const EditBook = () => {
     }
   };
   return (
-    <div className="flex flex-col gap-4">
-      <BreadCrumb title={["داشبورد", "ویرایش کتاب"]} />
+    <div className="flex flex-col">
+      <BreadCrumb title={["داشبورد", "ایجاد کتاب"]} />
 
-      <Form>
-        <SecondInput
+      <Form text="اضافه کردن کتاب">
+        <BookInput
           bookData={bookData}
           setBookData={setBookData}
           name="title"
           placeholder="نام کتاب را وارد نمایید ..."
         />
-        <SecondInput
+        <BookInput
           bookData={bookData}
           setBookData={setBookData}
           name="description"
           textarea={true}
           placeholder="توضیحی درباره کتاب وارد نمایید ... (اختیاری)"
         />
-        <SecondInput
+        <BookInput
           bookData={bookData}
           setBookData={setBookData}
           name="price"
@@ -58,10 +58,10 @@ const EditBook = () => {
 
         <Radio bookData={bookData} setBookData={setBookData} />
         <button
-          onClick={(e) => editHandler(e)}
+          onClick={(e) => postHandler(e)}
           className="bg-blue-600 text-white rounded px-2 py-1 mt-4 hover:bg-blue-700"
         >
-          ویرایش کتاب
+          ثبت کتاب
         </button>
       </Form>
       <Toaster />
@@ -69,4 +69,4 @@ const EditBook = () => {
   );
 };
 
-export default EditBook;
+export default AddBook;

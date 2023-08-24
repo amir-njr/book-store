@@ -20,8 +20,7 @@ import Users from "@/components/icons/Users";
 // React Icon
 import { BsSpeedometer2 } from "react-icons/bs";
 import { BiBookAdd } from "react-icons/bi";
-import { FaRegEdit } from "react-icons/fa";
-import { MdOutlineDeleteSweep } from "react-icons/md";
+import { ImBooks } from "react-icons/im";
 import { VscSettings } from "react-icons/vsc";
 
 export default function Aside({ role }) {
@@ -88,21 +87,24 @@ export default function Aside({ role }) {
           ? null
           : role === "ADMIN" && (
               <div>
-                <span
-                  onClick={() => setDropdown(!dropdown)}
-                  className={`${
-                    asideToggle ? "justify-center" : "justify-start"
-                  } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all cursor-pointer`}
-                >
-                  <span>
-                    <VscSettings className="text-2xl" />
+                <span>
+                  <span
+                    onClick={() => setDropdown(!dropdown)}
+                    className={`${
+                      asideToggle ? "justify-center" : "justify-start"
+                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all cursor-pointer`}
+                  >
+                    <span>
+                      <VscSettings className="text-2xl" />
+                    </span>
+                    {asideToggle ? " " : "مدیریت کتاب ها"}
                   </span>
-                  {asideToggle ? " " : "مدیریت کتاب ها"}
                 </span>
+
                 <div
                   className={`${
-                    dropdown ? "h-32" : "h-0 overflow-hidden"
-                  } transition-all px-3`}
+                    dropdown ? " h-20" : "h-0"
+                  } overflow-hidden transition-all text-sm px-4`}
                 >
                   <Link
                     className={`${
@@ -114,37 +116,24 @@ export default function Aside({ role }) {
                     href="/dashboard/add-book"
                   >
                     <span>
-                      <BiBookAdd className="text-xl" />
+                      <BiBookAdd className="text-2xl" />
                     </span>
-                    {asideToggle ? " " : "افزودن"}
+                    {asideToggle ? " " : "اضافه کردن کتاب"}
                   </Link>
+
                   <Link
                     className={`${
                       asideToggle ? "justify-center" : "justify-start"
                     } ${
-                      pathname === "/dashboard/edit-book" &&
+                      pathname === "/dashboard/books" &&
                       "bg-blue-400 text-white"
                     } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
-                    href="/dashboard/edit-book"
+                    href="/dashboard/books"
                   >
                     <span>
-                      <FaRegEdit className="text-xl" />
+                      <ImBooks className="text-2xl"/>
                     </span>
-                    {asideToggle ? " " : "ویرایش"}
-                  </Link>
-                  <Link
-                    className={`${
-                      asideToggle ? "justify-center" : "justify-start"
-                    } ${
-                      pathname === "/dashboard/delete-book" &&
-                      "bg-blue-400 text-white"
-                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
-                    href="/dashboard/delete-book"
-                  >
-                    <span>
-                      <MdOutlineDeleteSweep className="text-xl" />
-                    </span>
-                    {asideToggle ? " " : "حذف"}
+                    {asideToggle ? " " : "کتاب ها"}
                   </Link>
                 </div>
               </div>
