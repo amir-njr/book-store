@@ -61,7 +61,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 p-4 rounded-md bg-white">
+    <div className="flex flex-col items-center gap-2 p-4 rounded-md bg-white mx-auto md:w-full w-[80%]">
       <div className="flex flex-col justify-center items-center">
         <span className="rounded-full h-20 w-20 bg-blue-300">
           <User />
@@ -69,7 +69,7 @@ const SignUp = () => {
         <h1 className="text-xl">ثبت نام</h1>
       </div>
 
-      <form className="flex flex-col gap-5 w-full rounded-md">
+      <form className="flex flex-col gap-5 rounded-md">
         <div className="flex gap-2">
           <UserInput
             value={name}

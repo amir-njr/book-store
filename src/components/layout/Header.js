@@ -76,7 +76,7 @@ const Header = ({userName}) => {
           </div>
         </div>
       </div>
-      <Navbar userName={JSON.parse(JSON.stringify(userName))} />
+      <Navbar userName={userName} />
     </header>
   );
 };

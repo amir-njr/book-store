@@ -12,10 +12,10 @@ import Pictures from "../Pictures";
 
 const Right = ({ category, title, price }) => {
   return (
-    <div className="flex items-center gap-4 basis-8/12">
+    <div className="md:flex md:flex-row flex flex-col gap-4 items-center basis-8/12">
       <Pictures category={category} />
 
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-5 md:gap-10">
         <h1 className="flex gap-2">
           <MdOutlineDriveFileRenameOutline className="text-2xl" />
           <span className="text-blue-600 font-bold">نام کتاب:</span>

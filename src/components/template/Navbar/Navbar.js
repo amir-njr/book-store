@@ -33,7 +33,7 @@ const Navbar = ({ userName }) => {
           <div
             className={`${
               toggle ? "h-40" : "h-0 gap-0 p-0"
-            } md:hidden absolute flex flex-col gap-8 z-40 bg-blue-500 overflow-hidden top-8 p-2 rounded-l-md transition-all`}
+            } md:hidden absolute flex flex-col gap-8 z-50 bg-blue-500 overflow-hidden top-8 p-2 rounded-l-md transition-all`}
           >
             <Link className="hover:text-black flex gap-2 items-center" href="/">
               <FaHome className="text-xl" />

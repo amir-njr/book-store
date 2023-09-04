@@ -9,7 +9,7 @@ export default function BasketCard({ selected }) {
 
 
   return (
-    <div className="flex border-b-2 py-2 border-blue-600">
+    <div className="md:flex md:flex-row flex flex-col gap-4 border-b-2 py-2 border-blue-600">
       <Right category={category} title={title} price={price}/>
       <Middle qty={qty} />
       <Left selected={selected}/>

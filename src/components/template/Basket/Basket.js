@@ -21,34 +21,37 @@ const Basket = () => {
   const card = useSelector((state) => state.card);
 
   return (
-    <div className="flex my-10 gap-10 min-h-screen">
-      <div className="border-2 fixed left-10 flex flex-col justify-center px-5 gap-8 border-purple-500 rounded h-[350px]">
-        <div className="flex justify-between">
-          <span className="text-blue-600">کل محصولات:</span>
-          <span>{card.itemCounter}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-blue-600">قیمت کل:</span>
-          <span>{sp(card.totalPrice)}</span>
-        </div>
-        <div className="flex justify-between">
-          <Link
-            className="flex justify-center items-center gap-2 px-3 py-2 rounded w-full hover:bg-lime-500 border border-lime-500"
-            href=""
+    <div className="flex my-10 md:px-0 px-4 gap-10 min-h-screen">
+      {card.selectedItems.length ? (
+        <div className="border-2 bg-white fixed xl:left-10 xl:right-auto md:top-40 top-56 xl:flex xl:flex-col flex items-center justify-around px-2 gap-8 border-purple-500 rounded xl:h-[350px] h-20 xl:w-auto md:w-[650px] w-[300px] left-5">
+          <div className="flex justify-end xl:w-full xl:flex xl:justify-between">
+            <span className="text-blue-600 md:block hidden">کل محصولات:</span>
+            <span title="تعداد محصول">{card.itemCounter}</span>
+          </div>
+          <div className="flex justify-end xl:w-full xl:flex xl:justify-between">
+            <span className="text-blue-600 md:block hidden">قیمت کل:</span>
+            <span title="قیمت">{sp(card.totalPrice)}</span>
+          </div>
+          <div className="flex justify-between">
+            <Link
+              className="flex justify-center items-center gap-2 px-3  py-2 rounded w-full hover:bg-lime-500 border border-lime-500"
+              href=""
+            >
+              <BsFillCreditCard2BackFill className="text-xl" />
+              <span className="md:block hidden">پرداخت</span>
+            </Link>
+          </div>
+          <button
+            onClick={() => dispatch(clean())}
+            className="flex justify-center items-center gap-2 border px-3 py-2 rounded border-red-500 hover:bg-red-500"
           >
-            <BsFillCreditCard2BackFill className="text-xl" />
-            <span>پرداخت</span>
-          </Link>
+            <PiBroomFill className="text-xl" />
+            <span className="md:block hidden"> خالی کردن سبد</span>
+          </button>
         </div>
-        <button
-          onClick={() => dispatch(clean())}
-          className="flex justify-center items-center gap-2 border px-3 py-2 rounded border-red-500 hover:bg-red-500"
-        >
-          <PiBroomFill className="text-xl" />
-          <span> خالی کردن سبد</span>
-        </button>
-      </div>
-      <div className="basis-10/12 flex flex-col gap-4">
+      ) : null}
+
+      <div className="flex flex-col gap-4 md:basis-10/12 w-full xl:mt-0 md:mt-20 mt-14">
         {!card.selectedItems.length && (
           <Warning text="هنوز محصولی را به سبد خرید اضافه نکردید." />
         )}

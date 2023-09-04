@@ -14,12 +14,12 @@ import Pictures from "@/components/module/Pictures";
 const Detail = ({ detailBook }) => {
   const { title, price, category, description } = detailBook;
   return (
-    <div className="flex flex-col gap-5">
-      <div className="flex items-center gap-4 border-b-2 border-blue-500 pb-4">
+    <div className="flex flex-col gap-5 md:px-0 px-4">
+      <div className="md:flex md:flex-row md:items-center md:gap-4 flex flex-col gap-2 items-start border-b-2 border-blue-500 pb-4">
         <div>
           <Pictures category={category} />
         </div>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-6 md:gap-10">
           <h1 className="flex gap-2">
             <MdOutlineDriveFileRenameOutline className="text-2xl" />
             <span className="text-blue-600 font-bold">نام کتاب:</span>
