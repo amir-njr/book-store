@@ -4,7 +4,7 @@ import Left from "./Left";
 
 const Hero = () => {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center px-2">
             <Right />
             <Left />
         </div>

@@ -22,11 +22,11 @@ const Header = ({userName}) => {
 
   return (
     <header className="bg-blue-100 sticky top-0">
-      <div className="container mx-auto flex items-center py-4">
+      <div className="container mx-auto md:flex md:flex-row flex flex-col gap-3 items-center py-4">
         <div className="basis-4/12">
           <h1 className="text-6xl font-bold">شهرکتاب</h1>
         </div>
-        <div className="basis-4/12 flex justify-center">
+        <div className="basis-4/12 hidden md:flex justify-center">
           <button className="bg-blue-500 text-white rounded-r w-14 flex justify-center items-center hover:bg-blue-600">
             <Magnifying />
           </button>
@@ -76,7 +76,7 @@ const Header = ({userName}) => {
           </div>
         </div>
       </div>
-      <Navbar userName={userName} />
+      <Navbar userName={JSON.parse(JSON.stringify(userName))} />
     </header>
   );
 };

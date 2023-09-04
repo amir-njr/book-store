@@ -11,28 +11,28 @@ const Pictures = ({ category }) => {
     <div>
       {category === "handout" ? (
         <Image
-          className="rounded h-[200px] w-[300px]"
+          className="rounded h-[200px] w-full"
           src={handout}
           alt="Handout Photo"
         />
       ) : null}
       {category === "academic" ? (
         <Image
-          className="rounded h-[200px] w-[300px]"
+          className="rounded h-[200px] w-full"
           src={academic}
           alt="Academic Photo"
         />
       ) : null}
       {category === "story" ? (
         <Image
-          className="rounded h-[200px] w-[300px]"
+          className="rounded h-[200px] w-full"
           src={story}
           alt="Story Photo"
         />
       ) : null}
       {category === "novel" ? (
         <Image
-          className="rounded h-[200px] w-[300px]"
+          className="rounded h-[200px] w-full"
           src={novel}
           alt="Novel Photo"
         />
