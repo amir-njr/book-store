@@ -39,11 +39,11 @@ const AdminBookCard = ({ adminsBook }) => {
 
   return (
     <div className="flex flex-col border">
-      <div className="flex p-5">
-        <div className="flex basis-6/12 gap-4 items-center">
+      <div className="md:flex md:flex-row flex flex-col p-5">
+        <div className="md:flex md:flex-row flex flex-col basis-6/12 gap-4 items-center">
           <Pictures category={category} />
 
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col md:gap-10 gap-5">
             <h1 className="flex gap-2">
               <MdOutlineDriveFileRenameOutline className="text-2xl" />
               <span className="text-blue-600 font-bold">نام کتاب:</span>
@@ -64,7 +64,7 @@ const AdminBookCard = ({ adminsBook }) => {
           </div>
         </div>
 
-        <div className="basis-6/12 flex items-center justify-center gap-3">
+        <div className="basis-6/12 flex items-center justify-center md:mt-0 mt-3 gap-3">
           <Link
             href={`/dashboard/edit-book/${_id}`}
             className="border rounded flex items-center justify-center px-4 py-2 border-lime-500 hover:bg-lime-500 text-lime-500 hover:text-white w-32"

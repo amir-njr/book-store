@@ -18,7 +18,7 @@ async function DashboardLayout({ children }) {
   const user = await User.findOne({ email: session.user.email });
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex h-[100vh] max-w-[1500px] mx-auto" >
       <Aside role={user ? JSON.parse(JSON.stringify(user?.role)) : ""} />
 
       <Div>

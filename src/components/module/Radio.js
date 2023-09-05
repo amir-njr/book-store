@@ -9,7 +9,7 @@ function Radio({ bookData, setBookData }) {
   return (
     <div>
       <p className="text-blue-800 font-bold text-xl mb-4">دسته بندی</p>
-      <div className="flex justify-around">
+      <div className="md:flex md:flex-row flex flex-col md:gap-0 gap-3 md:justify-around">
         <div className="flex items-center gap-2 bg-blue-200 p-2 rounded">
           <label htmlFor="handout">جزوه درسی</label>
           <input

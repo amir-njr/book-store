@@ -16,7 +16,7 @@ const BookInput = ({
       {textarea ? (
         <textarea
           value={bookData[name]}
-          className="border-r-4 border-r-blue-600 focus:outline-none focus:bg-slate-200 bg-slate-100 p-2 w-[400px]"
+          className="border-r-4 border-r-blue-600 focus:outline-none focus:bg-slate-200 bg-slate-100 p-2"
           placeholder={placeholder}
           type="text"
           name={name}
@@ -25,7 +25,7 @@ const BookInput = ({
       ) : (
         <input
           value={bookData[name]}
-          className="border-r-4 border-r-blue-600 focus:outline-none focus:bg-slate-200 bg-slate-100 p-2 w-[400px]"
+          className="border-r-4 border-r-blue-600 focus:outline-none focus:bg-slate-200 bg-slate-100 p-2"
           placeholder={placeholder}
           type="text"
           name={name}

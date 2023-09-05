@@ -43,32 +43,33 @@ export default function DashboardHeader({ createdAt, name, role }) {
             <Bars />
           </span>
         </div>
-        <div className="bg-white px-4 py-7 shadow-md flex items-center gap-3 rounded font-bold">
-          <span>تاریخ عضویت:</span>
+        <div className="md:bg-white md:px-4 px-2 md:py-4 py-1 md:shadow-md md:flex md:flex-row flex flex-col md:text-base text-xs items-center gap-3 rounded font-bold">
+          <span className="text-center">تاریخ عضویت:</span>
           <p>{new Date(createdAt).toLocaleDateString("fa-IR")}</p>
         </div>
       </div>
       <div className="basis-4/12 flex justify-center">
         <Link
-          className="bg-white px-4 py-7 shadow-md flex items-center gap-3 rounded hover:text-blue-400 font-bold"
+          className="md:bg-white md:px-4 px-2 md:py-1 py-1 md:shadow-md md:flex flex flex-col items-center text-xs md:text-base gap-3 rounded hover:text-blue-400 font-bold"
           href="/"
         >
           <span className="text-xl">
             <AiOutlineHome />
           </span>
+          
           صفحه اصلی
         </Link>
       </div>
       <div className="basis-4/12 flex gap-3 items-center justify-end">
-        <div className="flex gap-3 items-center bg-white rounded p-2 shadow-md">
+        <div className="flex gap-3 items-center md:bg-white rounded p-2 md:shadow-md">
           <TbUserCircle className="text-6xl text-blue-500" />
-          <div className="flex flex-col border-l-2 border-black pl-3">
+          <div className="flex flex-col lg:border-l-2 lg:border-black pl-3">
             <span className="text-xs">
               {role === "ADMIN" ? "ادمین" : "کاربر"}
             </span>
             <span>{name ?? ""}</span>
           </div>
-          <p>
+          <p className="hidden lg:block">
             <span className="text-xl">
               <GoMail />
             </span>

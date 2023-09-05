@@ -39,8 +39,8 @@ export default function Aside({ role }) {
       <div className="h-24 bg-blue-600 flex items-center justify-center">
         <h1
           className={`${
-            asideToggle ? "text-2xl" : "text-5xl"
-          } text-white font-bold transition-all`}
+            asideToggle ? "text-2xl" : "md:text-4xl lg:text-5xl"
+          } text-white font-bold transition-all md:block hidden`}
         >
           شهر کتاب
         </h1>
@@ -48,39 +48,51 @@ export default function Aside({ role }) {
 
       <div className="flex flex-col gap-4 px-2 mt-5">
         <Link
-          className={`${asideToggle ? "justify-center" : "justify-start"} ${
-            pathname === "/dashboard" && "bg-blue-400 text-white"
-          } flex items-center gap-2 hover:bg-blue-400 hover:text-white hover:fill-white p-2 rounded w-full transition-all`}
+          className={`${
+            asideToggle ? "justify-center" : "md:justify-start justify-center"
+          } ${
+            pathname === "/dashboard" && "md:bg-blue-400 md:text-white md:border-none border-b-2 border-blue-800"
+          } flex items-center gap-2 hover:bg-blue-400 hover:text-white hover:fill-white md:p-2 md:rounded w-full transition-all`}
           href="/dashboard"
         >
           <span className="text-2xl">
             <BsSpeedometer2 />
           </span>
-          {asideToggle ? " " : "داشبورد"}
+          <span className="md:block hidden">
+            {asideToggle ? " " : "داشبورد"}
+          </span>
         </Link>
         {role === "ADMIN" ? (
           <Link
-            className={`${asideToggle ? "justify-center" : "justify-start"} ${
-              pathname === "/dashboard/my-books" && "bg-blue-400 text-white"
-            } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+            className={`${
+              asideToggle ? "justify-center" : "md:justify-start justify-center"
+            } ${
+              pathname === "/dashboard/my-books" && "md:bg-blue-400 md:text-white md:border-none border-b-2 border-blue-800"
+            } flex gap-2 hover:bg-blue-400 hover:text-white md:p-2 md:rounded w-full transition-all`}
             href="/dashboard/users"
           >
             <span>
               <Users />
             </span>
-            {asideToggle ? " " : "کاربران"}
+            <span className="md:block hidden">
+              {asideToggle ? " " : "کاربران"}
+            </span>
           </Link>
         ) : (
           <Link
-            className={`${asideToggle ? "justify-center" : "justify-start"} ${
-              pathname === "/dashboard/my-books" && "bg-blue-400 text-white"
-            } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+            className={`${
+              asideToggle ? "justify-center" : "md:justify-start justify-center"
+            } ${
+              pathname === "/dashboard/my-books" && "md:bg-blue-400 md:text-white md:border-none border-b-2 border-blue-800"
+            } flex gap-2 hover:bg-blue-400 hover:text-white md:p-2 md:rounded w-full transition-all`}
             href="/dashboard/my-books"
           >
             <span>
               <Book />
             </span>
-            {asideToggle ? " " : "کتاب های من"}
+            <span className="md:block hidden">
+              {asideToggle ? " " : "کتاب های من"}
+            </span>
           </Link>
         )}
         {role === "USER"
@@ -91,76 +103,90 @@ export default function Aside({ role }) {
                   <span
                     onClick={() => setDropdown(!dropdown)}
                     className={`${
-                      asideToggle ? "justify-center" : "justify-start"
+                      asideToggle ? "justify-center" : "md:justify-start justify-center"
                     } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all cursor-pointer`}
                   >
                     <span>
                       <VscSettings className="text-2xl" />
                     </span>
-                    {asideToggle ? " " : "مدیریت کتاب ها"}
+                    <span className="md:block hidden">
+                      {asideToggle ? " " : "مدیریت کتاب ها"}
+                    </span>
                   </span>
                 </span>
 
                 <div
                   className={`${
-                    dropdown ? " h-20" : "h-0"
-                  } overflow-hidden transition-all text-sm px-4`}
+                    dropdown ? "md:h-28 h-20" : "h-0"
+                  } overflow-hidden transition-all text-sm md:px-4`}
                 >
                   <Link
                     className={`${
-                      asideToggle ? "justify-center" : "justify-start"
+                      asideToggle
+                        ? "justify-center"
+                        : "md:justify-start justify-center"
                     } ${
                       pathname === "/dashboard/add-book" &&
-                      "bg-blue-400 text-white"
-                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+                      "md:bg-blue-400 md:text-white md:border-none border-b-2 border-blue-800"
+                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white md:p-2 md:rounded w-full transition-all`}
                     href="/dashboard/add-book"
                   >
                     <span>
                       <BiBookAdd className="text-2xl" />
                     </span>
-                    {asideToggle ? " " : "اضافه کردن کتاب"}
+                    <span className="lg:block hidden">
+                      {asideToggle ? " " : "اضافه کردن کتاب"}
+                    </span>
                   </Link>
 
                   <Link
                     className={`${
-                      asideToggle ? "justify-center" : "justify-start"
+                      asideToggle
+                        ? "justify-center"
+                        : "md:justify-start justify-center"
                     } ${
                       pathname === "/dashboard/books" &&
-                      "bg-blue-400 text-white"
-                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+                      "md:bg-blue-400 md:text-white md:border-none border-b-2 border-blue-800"
+                    } flex items-center gap-2 hover:bg-blue-400 hover:text-white md:p-2 md:rounded w-full transition-all`}
                     href="/dashboard/books"
                   >
                     <span>
-                      <ImBooks className="text-2xl"/>
+                      <ImBooks className="text-2xl" />
                     </span>
-                    {asideToggle ? " " : "کتاب ها"}
+                    <span className="lg:block hidden">
+                      {asideToggle ? " " : "کتاب ها"}
+                    </span>
                   </Link>
                 </div>
               </div>
             )}
 
         <Link
-          className={`${asideToggle ? "justify-center" : "justify-start"} ${
-            pathname === "/dashboard/profile text-white" && "bg-blue-400"
-          } flex gap-2 hover:bg-blue-400 hover:text-white p-2 rounded w-full transition-all`}
+          className={`${
+            asideToggle ? "justify-center" : "md:justify-start justify-center"
+          } ${
+            pathname === "/dashboard/profile" && "md:bg-blue-400 md:text-white md:border-none border-b-2 border-blue-800"
+          } flex gap-2 hover:bg-blue-400 hover:text-white md:p-2 md:rounded w-full transition-all`}
           href="/dashboard/profile"
         >
           <span>
             <Profile />
           </span>
-          {asideToggle ? " " : "پروفایل"}
+          <span className="md:block hidden">
+            {asideToggle ? " " : "پروفایل"}
+          </span>
         </Link>
 
         <button
           onClick={signOut}
           className={`${
-            asideToggle ? "justify-center" : "justify-start"
+            asideToggle ? "justify-center" : "md:justify-start justify-center"
           } flex text-red-500 gap-2 hover:bg-red-600 hover:text-white p-2 rounded w-full transition-all`}
         >
           <span>
             <Logout />
           </span>
-          {asideToggle ? " " : "خروج"}
+          <span className="md:block hidden">{asideToggle ? " " : "خروج"}</span>
         </button>
       </div>
     </section>
