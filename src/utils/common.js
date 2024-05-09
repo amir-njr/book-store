@@ -1,43 +1,25 @@
-import { hash, compare } from "bcryptjs";
-
-async function hashPassword(password) {
-  const hashedPassword = await hash(password, 12);
-  return hashedPassword;
-}
-
-async function verifyPassword(password, hashedPassword) {
-  const isValid = await compare(password, hashedPassword);
-  return isValid;
-}
-
-const e2p = (s) => s.toString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
-
-const p2e = (s) =>
-  s.toString().replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
-
-const sp = (number) => {
-  const seperatedNumber = number
-    .toString()
-    .match(/(\d+?)(?=(\d{3})+(?!\d)|$)/g);
-  const joinedNumber = seperatedNumber.join(",");
-  return e2p(joinedNumber);
+const shourter = (title) => {
+  const newTitle = title.split(" ");
+  return `${newTitle[0]} ${newTitle[1]} ${newTitle[2]}`;
 };
 
-export const qountityCount = (card, id) => {
-  if (card.selectedItems?.length >= 1) {
-    const index = card.selectedItems.findIndex((item) => item._id === id);
-    if (index === -1) {
-      return false;
-    } else {
-      return card.selectedItems[index].qty;
-    }
+const sumPrudocts = (product) => {
+  const itemsCounter = product.reduce((acc, cur) => acc + cur.qty, 0);
+  const total = product
+    .reduce((acc, cur) => acc + cur.price.split("$")[1] * cur.qty, 0)
+    .toFixed(2);
+
+  return { itemsCounter, total };
+};
+
+const productQty = (state, id) => {
+  const index = state.selectedItems.findIndex((i) => i.isbn13 === id);
+  if (index === -1) {
+    return 0;
   } else {
-    return false;
+    return state.selectedItems[index].qty;
   }
 };
 
-export const isDataInArray = (card, id) => {
-  return card.selectedItems?.find((item) => item._id === id);
-};
 
-export { hashPassword, verifyPassword, e2p, p2e, sp };
+export { shourter, sumPrudocts, productQty };
