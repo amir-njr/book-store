@@ -21,5 +21,12 @@ const productQty = (state, id) => {
   }
 };
 
+const makeCardNum = (cardNum) => {
+  const filterd = cardNum.filter((i) => i.length === 4);
+  const newCardNum = filterd.join("");
+  if (newCardNum.length === 16) return newCardNum;
+  else return { message: "شماره کارت را اشتباه وارد کرده اید.", type: "error" };
+};
 
-export { shourter, sumPrudocts, productQty };
+
+export { shourter, sumPrudocts, productQty, makeCardNum };

@@ -17,9 +17,11 @@ import DetailPage from "./pages/DetailPage";
 import CartPage from "./pages/CartPage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Shaparak from "./pages/Shaparak/Shaparak";
 import Payment from "./pages/Payment";
+import AddPage from "./pages/Dashboard/AddPage";
+import RemovePage from "./pages/Dashboard/RemovePage";
 
 function App() {
   const { pathname } = useLocation();
@@ -48,10 +50,12 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
             </Routes>
           </LoginLayout>
-        ) : pathname === "/dashboard" ? (
+        ) : pathname.includes("dashboard") ? (
           <DashLayout>
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/add" element={<AddPage />} />
+              <Route path="/dashboard/remove" element={<RemovePage />} />
             </Routes>
           </DashLayout>
         ) : (

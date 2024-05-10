@@ -9,7 +9,7 @@ const DashLayout = ({ children }) => {
 
       <div className="w-full">
         <Header />
-        <div className="mt-6">{children}</div>
+        <div className="mt-8 px-4">{children}</div>
       </div>
     </div>
   );

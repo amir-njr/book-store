@@ -1,5 +1,5 @@
 const PaymentInput = ({ text, type = false, handler }) => {
-  if (type) {
+  if (type === "expiration") {
     return (
       <div className="flex items-center gap-14">
         <div className="flex items-center gap-14">
@@ -18,14 +18,18 @@ const PaymentInput = ({ text, type = false, handler }) => {
         </div>
       </div>
     );
+  } else if (type === "simple") {
+    return (
+      <input
+        onChange={handler}
+        className="w-full rounded px-2 py-1 focus:outline-none text-center"
+      />
+    );
   } else {
     return (
       <div className="flex items-center gap-14">
         <label className="w-28">{text}</label>
-        <input
-          onChange={handler}
-          className="w-full rounded border px-2 py-1 focus:outline-none"
-        />
+        <input className="w-full rounded border px-2 py-1 focus:outline-none" />
       </div>
     );
   }

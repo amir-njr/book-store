@@ -14,7 +14,7 @@ const Timer = ({ sec, min }) => {
       setSeconds((prevSeconds) => prevSeconds - 1);
       if (seconds === 0) {
         setMinutes((prevMinutes) => prevMinutes - 1);
-        setSeconds(10)
+        setSeconds(60)
       }
     }, 1000);
 
@@ -24,7 +24,7 @@ const Timer = ({ sec, min }) => {
   return (
     <div className={`${minutes === 0 && "hidden"}`}>
       <span>{minutes}</span>:
-      <span className={`${seconds === 0 && "hidden"}`}>{seconds}</span>
+      <span >{seconds}</span>
     </div>
   );
 };

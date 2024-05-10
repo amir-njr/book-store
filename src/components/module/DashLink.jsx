@@ -10,7 +10,7 @@ const DashLink = ({ text, href, icon, btn = false }) => {
         </button>
       ) : (
         <Link
-          className="flex items-center gap-1 px-4 py-2 hover:bg-blue-600 hover:text-white transition-all"
+          className="flex items-center gap-2 px-4 py-2 hover:bg-blue-600 hover:text-white transition-all"
           to={href}
         >
           {icon}

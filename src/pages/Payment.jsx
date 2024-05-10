@@ -18,6 +18,7 @@ import toast, { Toaster } from "react-hot-toast";
 import PaymentInput from "components/module/PaymentInput";
 import Modal from "components/module/Modal";
 import Timer from "components/module/Timer";
+import { makeCardNum } from "utils/common";
 
 const Payment = () => {
   const [state] = useCart();
@@ -27,22 +28,24 @@ const Payment = () => {
   const { modalToggle } = setting;
 
   const buyHandler = () => {
-    if (!cardNum) {
-      toast.error("لطفا شماره کارت را وارد نمائید");
+    
+    const result = makeCardNum(cardNum);
+    if (result.type) {
+      toast.error(result.message);
       return;
     }
     const card = localStorage.getItem("card_number");
-    if (cardNum === card) {
+    if (result === card) {
       console.log("Registerd");
     } else {
       setSetting({ ...setting, modalToggle: true });
     }
   };
 
-  const [cardNum, setCardNum] = useState("");
+  const [cardNum, setCardNum] = useState([]);
   const changeHandler = (e) => {
     const { value } = e.target;
-    setCardNum(value);
+    setCardNum((prevState) => [...prevState, value]);
   };
 
   return (
@@ -55,11 +58,22 @@ const Payment = () => {
       </div>
       <div className="flex justify-center items-center gap-20 h-full px-10">
         <div className="basis-8/12 flex flex-col gap-4">
-          <PaymentInput handler={changeHandler} text="شماره کارت" />
+          <div className="flex gap-[50px]">
+            <label className="w-28">شماره کارت</label>
+            <div className="flex justify-between items-center bg-white border rounded">
+              <PaymentInput handler={changeHandler} type="simple" />
+              -
+              <PaymentInput handler={changeHandler} type="simple" />
+              -
+              <PaymentInput handler={changeHandler} type="simple" />
+              -
+              <PaymentInput handler={changeHandler} type="simple" />
+            </div>
+          </div>
           <PaymentInput text="رمز دوم" />
           <PaymentInput text="CVV2" />
 
-          <PaymentInput text="تاریخ انقضاء" type={true} />
+          <PaymentInput text="تاریخ انقضاء" type="expiration" />
 
           <PaymentInput text="کد امنیتی" />
           <PaymentInput text="ایمیل(اختیاری)" />
@@ -88,7 +102,9 @@ const Payment = () => {
               <LuClock4 className="text-xl" />
               <span>زمان باقی مانده:</span>
             </div>
-            <span><Timer min={15} sec={10} /></span>
+            <span>
+              <Timer min={15} sec={60} />
+            </span>
           </div>
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
