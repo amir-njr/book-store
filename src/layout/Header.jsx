@@ -1,13 +1,18 @@
+// State
+import { useState } from "react";
 // React-Router-Dom
 import { Link } from "react-router-dom";
 // React-Icon
 import { FaHome } from "react-icons/fa";
 import { IoMdHelpCircle } from "react-icons/io";
 import { BiSupport } from "react-icons/bi";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { CgProfile } from "react-icons/cg";
 
 // Module
 import SerchInput from "../components/module/SerchInput";
 import CounterBook from "../components/module/CounterBook";
+import DropDown from "../components/module/DropDown";
 // Shared
 import Logo from "components/shared/Logo";
 // Custom-Hook
@@ -16,15 +21,44 @@ import { useCart } from "context/CartContext";
 const Header = () => {
   const [state] = useCart();
   const { itemsCounter } = state;
+  const [dropdown, setDropdown] = useState(false);
   return (
     <header className="sticky top-0 bg-[#f3f4f8]">
-      <div className="container mx-auto px-10 border flex justify-between items-center py-6">
+      <div className="container mx-auto px-10 flex justify-between items-center md:py-6 py-4">
         <Logo text="شهر کتاب" />
         <SerchInput />
         <CounterBook itemsCounter={itemsCounter} />
       </div>
       <div className="container mx-auto px-10 bg-blue-600 flex justify-between items-center text-white py-2">
-        <nav className="flex items-center gap-16">
+        <div className="relative md:hidden">
+          <button onClick={() => setDropdown(!dropdown)}>
+            <FaBarsStaggered className="text-2xl" />
+          </button>
+          <DropDown dropdown={dropdown}>
+            <Link
+              to="/home"
+              className="flex items-center gap-1 hover:text-gray-300"
+            >
+              <FaHome />
+              صفحه اصلی
+            </Link>
+            <Link
+              to="/about-us"
+              className="flex items-center gap-1 hover:text-gray-300"
+            >
+              <IoMdHelpCircle />
+              درباره ما
+            </Link>
+            <Link
+              to="/contact-us"
+              className="flex items-center gap-1 hover:text-gray-300"
+            >
+              <BiSupport />
+              تماس با ما
+            </Link>
+          </DropDown>
+        </div>
+        <nav className="md:flex md:items-center md:gap-16 hidden">
           <Link
             className="hover:text-gray-300 flex items-center gap-1"
             to="/home"
@@ -48,7 +82,13 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="md:hidden">
+          <span className="cursor-pointer">
+            <CgProfile className="text-2xl" />
+          </span>
+        </div>
+
+        <div className="md:flex md:items-center md:gap-2 hidden">
           <Link className="hover:text-gray-300" to="/sign-in">
             ورود
           </Link>

@@ -1,6 +1,6 @@
 const Logo = ({ text, color = false }) => {
   return (
-    <h1 className={`${color && "text-blue-600"} text-5xl font-bold`}>{text}</h1>
+    <h1 className={`${color && "text-blue-600"} md:text-5xl text-2xl font-bold`}>{text}</h1>
   );
 };
 
