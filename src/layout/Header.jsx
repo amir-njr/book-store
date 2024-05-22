@@ -8,6 +8,8 @@ import { IoMdHelpCircle } from "react-icons/io";
 import { BiSupport } from "react-icons/bi";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
+import { BiLogInCircle } from "react-icons/bi";
+import { TiContacts } from "react-icons/ti";
 
 // Module
 import SerchInput from "../components/module/SerchInput";
@@ -21,7 +23,8 @@ import { useCart } from "context/CartContext";
 const Header = () => {
   const [state] = useCart();
   const { itemsCounter } = state;
-  const [dropdown, setDropdown] = useState(false);
+  const [navDropdown, setNavDropdown] = useState(false);
+  const [dashDropdown, setDashDropdown] = useState(false);
   return (
     <header className="sticky top-0 bg-[#f3f4f8]">
       <div className="container mx-auto px-10 flex justify-between items-center md:py-6 py-4">
@@ -31,10 +34,10 @@ const Header = () => {
       </div>
       <div className="container mx-auto px-10 bg-blue-600 flex justify-between items-center text-white py-2">
         <div className="relative md:hidden">
-          <button onClick={() => setDropdown(!dropdown)}>
+          <button onClick={() => setNavDropdown(!navDropdown)}>
             <FaBarsStaggered className="text-2xl" />
           </button>
-          <DropDown dropdown={dropdown}>
+          <DropDown dropdown={navDropdown}>
             <Link
               to="/home"
               className="flex items-center gap-1 hover:text-gray-300"
@@ -82,10 +85,30 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="md:hidden">
-          <span className="cursor-pointer">
+        <div className="md:hidden relative">
+          <button
+            onClick={() => setDashDropdown(!dashDropdown)}
+            className="cursor-pointer"
+          >
             <CgProfile className="text-2xl" />
-          </span>
+          </button>
+
+          <DropDown position={true} dropdown={dashDropdown}>
+            <Link
+              to="/sign-in"
+              className="flex items-center gap-1 hover:text-gray-300"
+            >
+              <BiLogInCircle className="text-xl" />
+              ورود
+            </Link>
+            <Link
+              to="/sign-up"
+              className="flex items-center gap-1 hover:text-gray-300"
+            >
+              <TiContacts className="text-xl" />
+              ثبت نام
+            </Link>
+          </DropDown>
         </div>
 
         <div className="md:flex md:items-center md:gap-2 hidden">

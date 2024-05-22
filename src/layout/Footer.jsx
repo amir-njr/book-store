@@ -7,7 +7,7 @@ import { HiOutlineMail } from "react-icons/hi";
 const Footer = () => {
   return (
     <footer className="bg-[#222222]">
-      <div className="lg:flex lg:flex-row  flex flex-col md:px-10 px-6 py-8">
+      <div className="lg:flex lg:flex-row  flex flex-col items-center md:px-10 px-6 py-8">
         <div className="basis-6/12 flex flex-col gap-2 text-white">
           <p>&copy; تمامی حقوق این سایت محفوظ می باشد.</p>
           <p className="flex gap-2">

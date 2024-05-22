@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import hero from "../../assets/img/book-hero.jpg";
 const Hero = () => {
   return (
-    <div className="flex">
+    <div className="lg:flex-row flex flex-col gap-6">
       <div className="basis-6/12 flex flex-col gap-10 justify-center">
         <h1 className="text-6xl font-bold">#کتاب_بخوانیم 📚</h1>
         <p className=" leading-9">

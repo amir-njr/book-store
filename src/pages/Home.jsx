@@ -17,7 +17,7 @@ const Home = () => {
 
       <div
         className={`${
-          bookData.length ? "grid grid-cols-4 gap-8" : "flex justify-center"
+          bookData.length ? "grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8" : "flex justify-center"
         }`}
       >
         {bookData.length ? (
