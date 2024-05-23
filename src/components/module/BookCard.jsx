@@ -20,7 +20,7 @@ const BookCard = ({ book, type = false }) => {
     <div
       className={`${
         type
-          ? "flex justify-between items-center gap-6 h-28"
+          ? "lg:flex-row flex flex-col justify-between items-center gap-6 lg:h-28 h-fit"
           : "flex flex-col gap-6"
       } border bg-white p-4 rounded hover:shadow-2xl`}
     >

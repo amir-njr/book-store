@@ -31,7 +31,7 @@ const SignUp = () => {
   };
   return (
     <Form>
-      <div className="flex flex-col gap-6 items-center">
+      <div className="flex flex-col gap-6 items-center md:w-fit w-[300px]">
         <Logo text="شهر کتاب" color={true} />
         <div className="border-2 border-blue-600 bg-white rounded flex flex-col gap-10 items-center p-4">
           <h1>ثبت نام</h1>
@@ -77,7 +77,7 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="flex justify-between items-center w-full">
+          <div className="md:flex-row md:gap-0 flex flex-col gap-6 justify-between items-center w-full">
             <Button text="ارسال" />
             <div className="flex items-center gap-2">
               <p className="underline">حسابی دارید؟</p>

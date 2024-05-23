@@ -12,7 +12,7 @@ const DetailPage = () => {
   const detailBook = useDetail(id);
   const { title, image, price, subtitle } = detailBook;
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col-reverse lg:flex-row gap-4">
       <div className="flex flex-col justify-center basis-8/12 border-2 border-dashed gap-20 p-4 rounded bg-white">
         <h1 className="text-blue-600 text-4xl font-bold">{title}</h1>
         <p>{subtitle}</p>

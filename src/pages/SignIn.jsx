@@ -54,7 +54,7 @@ const SignIn = () => {
             </div>
           </div>
 
-          <div className="flex justify-between items-center w-full">
+          <div className="md:flex-row md:gap-0 flex flex-col gap-6 justify-between items-center w-full">
             <Button text="ارسال" />
             <div className="flex items-center gap-2">
               <p className="underline">حسابی ندارید؟</p>

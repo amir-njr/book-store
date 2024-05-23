@@ -18,7 +18,7 @@ const CartPage = () => {
   const { selectedItems, itemsCounter, total } = state;
 
   return (
-    <div className="flex gap-4">
+    <div className="lg:flex-row flex flex-col gap-4">
       <div className="basis-10/12 flex flex-col gap-4">
         {selectedItems.length ? (
           selectedItems.map((book) => (
