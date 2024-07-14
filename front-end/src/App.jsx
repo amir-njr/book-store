@@ -31,6 +31,7 @@ import AddUser from "./pages/Dashboard/AddUser";
 import Books from "./pages/Dashboard/Books";
 import AddBook from "./pages/Dashboard/AddBook";
 import NotFound from "./pages/NotFound";
+import MyBooks from "./pages/Dashboard/MyBooks";
 
 function App() {
   const { pathname } = useLocation();
@@ -58,7 +59,7 @@ function App() {
     return (
       <CartProvider>
         <Routes>
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment" element={<Payment id={userData._id} />} />
         </Routes>
       </CartProvider>
     );
@@ -118,7 +119,18 @@ function App() {
               <Route
                 path="/dashboard/add-book"
                 element={
-                  userData === 500 ? <AddBook /> : <Navigate to="/sign-in" />
+                  userData !== 500 ? <AddBook /> : <Navigate to="/sign-in" />
+                }
+              />
+
+              <Route
+                path="/dashboard/my-books"
+                element={
+                  userData !== 500 ? (
+                    <MyBooks email={userData.email} />
+                  ) : (
+                    <Navigate to="/sign-in" />
+                  )
                 }
               />
             </Routes>

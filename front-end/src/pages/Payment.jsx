@@ -21,15 +21,12 @@ import Timer from "components/module/Timer";
 // Utils
 import { sp } from "utils/common";
 // Config - Api
-import { ShoppingCardBaseUrl } from "configs/api";
+import { DataBaseUrl, ShoppingCardBaseUrl } from "configs/api";
 
-const Payment = () => {
+const Payment = ({ id }) => {
   const [state] = useCart();
   const { total, selectedItems, itemsCounter } = state;
-  console.log(state, "state");
-  console.log(total, "total");
-  console.log(selectedItems, "selectedItems");
-  console.log(itemsCounter, "itemsCounter");
+  console.log(selectedItems,"select")
 
   const [setting, setSetting] = useAtom(Setting);
   const { modalToggle } = setting;
@@ -52,7 +49,21 @@ const Payment = () => {
 
       if (json.status === 404) {
         setSetting({ ...setting, modalToggle: true });
-      } else toast.success("خرید با موفقیت انجام شد ...");
+        return;
+      } else {
+        const res = await fetch(DataBaseUrl("give-data"), {
+          method: "POST",
+          body: JSON.stringify({
+            totalPrice: total,
+            bought: selectedItems,
+            productionCount: itemsCounter,
+            userId: id,
+          }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const json = await res.json();
+        toast.success(json.message);
+      }
     } catch (error) {
       console.log(error.message);
     }

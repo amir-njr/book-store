@@ -43,6 +43,7 @@ const Users = () => {
                 email={user.email}
                 id={user._id}
                 createdAt={user.createdAt}
+                role={user.role}
               />
             ))}
           </>

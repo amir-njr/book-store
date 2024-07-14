@@ -48,7 +48,7 @@ const Aside = ({ role }) => {
         {role === "USER" ? (
           <DashLink
             text="کتاب های من"
-            href=""
+            href="/dashboard/my-books"
             icon={<FaBookOpen className="text-xl" />}
           />
         ) : (

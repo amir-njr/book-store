@@ -8,7 +8,7 @@ import { UserBaseUrl } from "configs/api";
 // Module
 import Form from "./Form";
 
-const UserCard = ({ name, email, id, createdAt }) => {
+const UserCard = ({ name, email, id, createdAt, role }) => {
   const [dropDown, setDropdown] = useState(false);
   const deleteHandler = async () => {
     const res = await fetch(UserBaseUrl(`delete-one/${id}`), {
@@ -67,7 +67,7 @@ const UserCard = ({ name, email, id, createdAt }) => {
         <tr className="flex p-2">
           <td className="basis-2/12 text-center">{name}</td>
           <td className="basis-2/12 text-center">{email}</td>
-          <td className="basis-2/12 text-center">کاربر</td>
+          <td className="basis-2/12 text-center">{role}</td>
           <td className="basis-2/12 text-center">
             {new Date(createdAt).toLocaleDateString("fa-IR")}
           </td>
