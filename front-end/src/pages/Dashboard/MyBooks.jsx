@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { UserBaseUrl } from "configs/api";
 // Module
 import MyBookCard from "components/module/MyBookCard";
+import BreadCrumb from "components/module/BreadCrumb";
+import Warning from "components/module/Warning";
 
 const MyBooks = ({ email }) => {
   const [data, setData] = useState({});
@@ -24,10 +26,23 @@ const MyBooks = ({ email }) => {
   const { myBooks } = data;
 
   return (
-    <div className="grid grid-cols-6 gap-6">
-      {myBooks?.map((item) => (
-        <MyBookCard key={item._id} title={item.title} price={item.price} image={item.image} />
-      ))}
+    <div>
+      <BreadCrumb title={["داشبورد", "کتاب های من"]} />
+
+      {myBooks?.length ? (
+        <div className="grid grid-cols-7 gap-6">
+          {myBooks?.map((item) => (
+            <MyBookCard
+              key={item._id}
+              title={item.title}
+              qty={item.qty}
+              image={item.image}
+            />
+          ))}
+        </div>
+      ) : (
+        <Warning text="شما هنوز محصولی خریداری نکرده اید !!!" />
+      )}
     </div>
   );
 };

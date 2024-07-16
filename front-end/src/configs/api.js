@@ -12,5 +12,14 @@ function ShoppingCardBaseUrl(endPoint) {
 function DataBaseUrl(endPoint) {
   return `http://localhost:3000/data/${endPoint}`;
 }
+function InfoBaseUrl(endPoint) {
+  return `http://localhost:3000/info/${endPoint}`;
+}
 
-export { UserBaseUrl, BookBaseUrl, ShoppingCardBaseUrl, DataBaseUrl };
+export {
+  UserBaseUrl,
+  BookBaseUrl,
+  ShoppingCardBaseUrl,
+  DataBaseUrl,
+  InfoBaseUrl,
+};

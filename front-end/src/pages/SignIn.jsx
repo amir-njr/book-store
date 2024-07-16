@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { TfiBackRight } from "react-icons/tfi";
 import { MdEmail } from "react-icons/md";
 import { IoIosUnlock } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
 // JS - Cookie
 import Cookies from "js-cookie";
 
@@ -25,6 +26,7 @@ const SignIn = () => {
   const [signInData, setSignInData] = useState({
     email: "",
     password: "",
+    rolePassword: "",
   });
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -35,7 +37,7 @@ const SignIn = () => {
   };
 
   const submitHandler = async (e) => {
-    const { email, password } = signInData;
+    const { email, password, rolePassword } = signInData;
     e.preventDefault();
     if (!email || !password) {
       toast.error("اطلاعات را بدرستی وارد نکرده اید");
@@ -44,7 +46,7 @@ const SignIn = () => {
     try {
       const res = await fetch(UserBaseUrl("sign-in"), {
         method: "POST",
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, rolePassword }),
         headers: { "Content-Type": "application/json" },
       });
       const json = await res.json();
@@ -84,6 +86,15 @@ const SignIn = () => {
                 type="password"
                 name="password"
                 placeholder="رمز عبور را وارد نمایید ..."
+                changeHandler={changeHandler}
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <FaUser className="text-xl text-blue-600" />
+              <Input
+                type="password"
+                name="rolePassword"
+                placeholder="ADMIN"
                 changeHandler={changeHandler}
               />
             </div>

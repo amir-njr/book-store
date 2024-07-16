@@ -32,6 +32,7 @@ import Books from "./pages/Dashboard/Books";
 import AddBook from "./pages/Dashboard/AddBook";
 import NotFound from "./pages/NotFound";
 import MyBooks from "./pages/Dashboard/MyBooks";
+import Chart from "./pages/Dashboard/Chart";
 
 function App() {
   const { pathname } = useLocation();
@@ -81,6 +82,16 @@ function App() {
                 element={
                   userData.status !== 500 ? (
                     <Dashboard role={userData.role} />
+                  ) : (
+                    <Navigate to="/sign-in" />
+                  )
+                }
+              />
+              <Route
+                path="/dashboard/chart"
+                element={
+                  userData.status !== 500 ? (
+                    <Chart />
                   ) : (
                     <Navigate to="/sign-in" />
                   )
